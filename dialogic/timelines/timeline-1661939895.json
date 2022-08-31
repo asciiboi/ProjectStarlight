@@ -20,7 +20,13 @@
 			"character": "",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "That sounds like a you problem"
+			"text": "Well...."
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "That sorta sounds like a you problem"
 		},
 		{
 			"choice": "No",
