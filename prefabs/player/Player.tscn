@@ -1,10 +1,15 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://prefabs/player/Player.gd" type="Script" id=1]
+[ext_resource path="res://prefabs/player/SpeechArea.gd" type="Script" id=2]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.5
 height = 1.8
+
+[sub_resource type="CylinderShape" id=2]
+height = 2.75
+radius = 4.5
 
 [node name="Player" type="KinematicBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0 )
@@ -25,3 +30,12 @@ current = true
 fov = 90.0
 near = 0.02
 far = 500.0
+
+[node name="SpeechArea" type="Area" parent="."]
+unique_name_in_owner = true
+collision_layer = 4
+collision_mask = 4
+script = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="SpeechArea"]
+shape = SubResource( 2 )

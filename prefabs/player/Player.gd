@@ -2,7 +2,7 @@ extends KinematicBody
 
 ###################-VARIABLES-####################
 
-
+var speaking = false
 
 # Camera
 export(float) var mouse_sensitivity = 12.0
@@ -42,12 +42,18 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame
 func _process(_delta: float) -> void:
+	speaking = Dialogic.has_current_dialog_node()
+	if speaking:
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	else:
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	move_axis.x = Input.get_action_strength("move_forward") - Input.get_action_strength("move_backward")
 	move_axis.y = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 
 # Called every physics tick. 'delta' is constant
 func _physics_process(delta: float) -> void:
-	walk(delta)
+	if not speaking:
+		walk(delta)
 
 # Called when there is an input event
 func _input(event: InputEvent) -> void:
