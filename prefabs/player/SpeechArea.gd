@@ -5,7 +5,7 @@ var can_speak = false
 
 
 func _process(delta):
-	can_speak = bool(overlap)
+	can_speak = !!overlap
 
 func _physics_process(delta):
 	overlap = get_overlapping_areas()
